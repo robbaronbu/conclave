@@ -6,6 +6,7 @@ from conclave.config import SharemindCodeGenConfig
 from conclave.config import SparkConfig
 from conclave.config import NetworkConfig
 from typing import Callable, Dict
+import sys
 
 
 def setup(conf: Dict):
@@ -47,6 +48,7 @@ def setup(conf: Dict):
 
 
 def run(protocol: Callable):
+    print("Starting run()", file=sys.stderr)
     # Parse arguments
     parser = argparse.ArgumentParser(description="Run new workflow for Conclave.")
     parser.add_argument("--conf", metavar="/config/file.yml", type=str,
@@ -63,6 +65,7 @@ def run(protocol: Callable):
     conclave_config = setup(conf)
 
     generate_and_dispatch(protocol, conclave_config, ["sharemind"], ["spark"])
+    print("End of run()", file=sys.stderr)
 
 
 # Custom yaml join
