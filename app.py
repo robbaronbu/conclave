@@ -47,6 +47,9 @@ def setup(conf: Dict):
 
 
 def run(protocol: Callable):
+    while(1): 
+        #do nothing
+    
     # Parse arguments
     parser = argparse.ArgumentParser(description="Run new workflow for Conclave.")
     parser.add_argument("--conf", metavar="/config/file.yml", type=str,
